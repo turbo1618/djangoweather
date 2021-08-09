@@ -1,7 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<br>
 
-<h1>Hello World!</h1>
+{% if zipcode %}
+	{{zipcode}}
+{% endif %}
+
+{% if api %}
+	{% if api == "Error..." %}
+		There was an error, please try again...
+	{% else %}	
+
+<div class="card {{ category_color }}">
+  <img src="..." class="card-img-top" alt="...">
+
+  <div class="card-body">
+    <h5 class="card-title">{{ api.0.Category.Name }}</h5>
+    <p class="lead"> Current {{ api.0.ReportingArea }} Air Quality: {{ api.0.AQI }}</p>
+    
+    <p>{{ category_dscription }}</p>
+
+    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+  </div>
+</div>
+
+
+		Air Quality: {{ api.0.AQI }}<br>
+		Area: {{ api.0.ReportingArea }}<br>
+		Category: {{ api.0.Category.Name }}<br>
+	{% endif %}
+
+{% endif %}
+
 
 {% endblock %}

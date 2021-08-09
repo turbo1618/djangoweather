@@ -10,6 +10,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    <style>
+    	.good {background-color: rgb(0, 228, 0);}
+    	.moderate {background-color: yellow;}
+    	.unhealthyforsensitivegroups {background-color: rgb(255, 126, 0);}
+    	.unhealthy {background-color: red;}
+    	.veryunhealthy {background-color: rgb(143, 63, 151;}
+    	.hazardous {background-color: rgb(126, 0, 35 );}
+
+	</style>
+
+
   </head>
   <body>
   	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -24,9 +35,10 @@
           <a class="nav-link" href="{% url 'about' %}">About Me</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      <form action = "{% url 'home' %}" class="d-flex" method="POST">
+      	{% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Enter Zipcode" aria-label="Search" name="zipcode">
+        <button class="btn btn-outline-secondary" type="submit">Lookup</button>
       </form>
     </div>
   </div>
